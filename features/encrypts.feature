@@ -22,7 +22,7 @@ Feature: eyaml encrypting
 
   Scenario: encrypt a password
     When I run `./supply_password.sh eyaml encrypt -o string -p`
-    Then the file "password.output" should match /\AENC\[PKCS7,(.*?)\]\Z/
+    Then the file "password.output" should match %r{\AENC\[PKCS7,(.*?)\]\Z}
 
   Scenario: encrypt using STDIN
     When I run `./pipe_string.sh encrypt_me eyaml encrypt -o string --stdin`
